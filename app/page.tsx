@@ -82,77 +82,77 @@ export default function Home() {
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 bg-background-dark/80 backdrop-blur-md border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+      <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-stone-200/50 shadow-sm transition-all">
+        <div className="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="text-primary flex items-center">
-              <span className="material-symbols-outlined" style={{ fontSize: '36px' }}>domain</span>
+            <div className="text-amber-600 flex items-center">
+              <span className="material-symbols-outlined" style={{ fontSize: '38px' }}>domain</span>
             </div>
-            <h2 className="text-xl font-bold tracking-tight text-slate-100">
-              Smarterprop<span className="text-primary">.online</span>
+            <h2 className="text-2xl font-bold tracking-tight text-stone-800">
+              Smarterprop<span className="text-amber-600">.online</span>
             </h2>
           </div>
-          <div className="flex items-center gap-6">
-            <a className="hidden md:block text-sm font-medium hover:text-primary transition-colors cursor-pointer">{t.propLink}</a>
-            <a className="hidden md:block text-sm font-medium hover:text-primary transition-colors cursor-pointer">{t.howLink}</a>
+          <div className="flex items-center gap-8">
+            <a className="hidden md:block text-sm font-semibold text-stone-600 hover:text-amber-600 transition-colors cursor-pointer">{t.propLink}</a>
+            <a className="hidden md:block text-sm font-semibold text-stone-600 hover:text-amber-600 transition-colors cursor-pointer">{t.howLink}</a>
 
-            <div className="flex items-center gap-2 bg-slate-800/50 p-1 rounded-lg border border-slate-700">
+            <div className="flex items-center gap-2 bg-stone-100/80 p-1.5 rounded-full border border-stone-200/50 shadow-inner">
               <button
                 onClick={() => setLang('es')}
-                className={`w-8 h-8 rounded shrink-0 flex items-center justify-center transition-all ${lang === 'es' ? 'bg-primary/20 border border-primary/50' : 'opacity-50 hover:opacity-100'}`}
+                className={`w-9 h-9 rounded-full shrink-0 flex items-center justify-center transition-all ${lang === 'es' ? 'bg-white shadow-sm border border-stone-200 scale-105' : 'opacity-50 hover:opacity-100 grayscale hover:grayscale-0'}`}
                 title="Chile (ES)"
               >
                 🇨🇱
               </button>
               <button
                 onClick={() => setLang('it')}
-                className={`w-8 h-8 rounded shrink-0 flex items-center justify-center transition-all ${lang === 'it' ? 'bg-primary/20 border border-primary/50' : 'opacity-50 hover:opacity-100'}`}
+                className={`w-9 h-9 rounded-full shrink-0 flex items-center justify-center transition-all ${lang === 'it' ? 'bg-white shadow-sm border border-stone-200 scale-105' : 'opacity-50 hover:opacity-100 grayscale hover:grayscale-0'}`}
                 title="Italy (IT)"
               >
                 🇮🇹
               </button>
             </div>
 
-            <button className="bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 px-6 py-2 rounded-lg font-bold text-sm transition-all">
+            <button className="bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200/50 px-7 py-2.5 rounded-full font-bold text-sm transition-all shadow-sm hover:shadow-md">
               {t.loginBtn}
             </button>
           </div>
         </div>
       </nav>
 
-      <section className="relative h-screen min-h-[700px] w-full flex flex-col items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 hero-gradient z-10"></div>
-          <img alt="Background" className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop" />
+      <section className="relative h-screen min-h-[850px] w-full flex flex-col items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0 bg-stone-100">
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/30 to-transparent z-10"></div>
+          <img alt="Background Tuscany" className="w-full h-full object-cover scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop" />
         </div>
 
-        <div className="relative z-20 w-full max-w-5xl px-4 flex flex-col items-center justify-center text-center mt-[-5vh]">
-          <h1 className="text-white text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-8">
-            {t.heroTitle} <span className="text-transparent bg-clip-text bg-gradient-to-r">{t.heroHighlight}</span> {t.heroTitleEnd}
+        <div className="relative z-20 w-full max-w-5xl px-4 flex flex-col items-center justify-center text-center mt-8">
+          <h1 className="text-white text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6 drop-shadow-xl">
+            {t.heroTitle} <span className="text-amber-400 drop-shadow-lg">{t.heroHighlight}</span> {t.heroTitleEnd}
           </h1>
-          <p className="text-slate-300 text-lg md:text-xl font-normal max-w-2xl mx-auto mb-12">
+          <p className="text-stone-100 text-lg md:text-2xl font-medium max-w-3xl mx-auto mb-14 drop-shadow-md">
             {t.heroDesc}
           </p>
 
-          <div className="w-full max-w-4xl mx-auto bg-slate-900/80 backdrop-blur-xl border border-slate-700/80 p-3 rounded-2xl shadow-2xl flex flex-col md:flex-row gap-3 mb-12">
-            <div className="flex-1 flex items-center gap-3 px-5 bg-slate-800/80 rounded-xl border border-slate-700 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 transition-all">
-              <span className="material-symbols-outlined text-blue-400">location_on</span>
-              <input className="w-full bg-transparent border-none focus:ring-0 text-white placeholder:text-slate-400 py-4 outline-none text-lg" placeholder={t.searchLoc} type="text" />
+          <div className="w-full max-w-5xl mx-auto bg-white/95 backdrop-blur-2xl border border-white/40 p-3 sm:p-4 rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] flex flex-col md:flex-row gap-3 md:gap-4 mb-14">
+            <div className="flex-1 flex items-center gap-3 px-6 bg-stone-100/50 hover:bg-stone-100/80 rounded-full border border-stone-200/60 focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-400/20 transition-all h-[70px]">
+              <span className="material-symbols-outlined text-amber-500 text-2xl">location_on</span>
+              <input className="w-full bg-transparent border-none focus:ring-0 text-stone-800 placeholder:text-stone-400 py-4 outline-none text-lg font-medium" placeholder={t.searchLoc} type="text" />
             </div>
-            <div className="flex-1 flex items-center gap-3 px-5 bg-slate-800/80 rounded-xl border border-slate-700 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 transition-all">
-              <span className="material-symbols-outlined text-blue-400">home_work</span>
-              <input className="w-full bg-transparent border-none focus:ring-0 text-white placeholder:text-slate-400 py-4 outline-none text-lg" placeholder={t.searchType} type="text" />
+            <div className="flex-1 flex items-center gap-3 px-6 bg-stone-100/50 hover:bg-stone-100/80 rounded-full border border-stone-200/60 focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-400/20 transition-all h-[70px]">
+              <span className="material-symbols-outlined text-amber-500 text-2xl">home_work</span>
+              <input className="w-full bg-transparent border-none focus:ring-0 text-stone-800 placeholder:text-stone-400 py-4 outline-none text-lg font-medium" placeholder={t.searchType} type="text" />
             </div>
-            <button className="bg-blue-600 hover:bg-blue-500 text-white h-[60px] md:h-auto px-10 rounded-xl font-bold text-lg shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] transition-all flex items-center justify-center gap-2">
+            <button className="bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white h-[70px] md:h-auto px-12 rounded-full font-bold text-lg shadow-[0_10px_30px_-10px_rgba(217,119,6,0.5)] transform hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(217,119,6,0.6)] transition-all flex items-center justify-center gap-2">
               <span className="material-symbols-outlined">search</span> {t.searchBtn}
             </button>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <button className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] transition-all flex items-center justify-center gap-3 group">
+            <button className="bg-amber-600 hover:bg-amber-500 text-white px-10 py-4.5 rounded-full font-bold text-lg shadow-[0_8px_25px_-8px_rgba(217,119,6,0.6)] transform hover:-translate-y-1 transition-all flex items-center justify-center gap-3 group">
               {t.exploreBtn} <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
             </button>
-            <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-xl font-bold text-lg transition-all">
+            <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/40 px-10 py-4.5 rounded-full font-bold text-lg transform hover:-translate-y-1 transition-all">
               {t.portfolioBtn}
             </button>
           </div>
@@ -160,60 +160,63 @@ export default function Home() {
 
       </section>
 
-      <div className="bg-background-dark py-12 border-b border-slate-800">
+      <div className="bg-white py-16 border-b border-stone-100 shadow-sm relative z-30 -mt-8 rounded-t-[3rem] max-w-[95%] mx-auto">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="flex flex-col gap-1 text-center md:text-left">
-              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">{t.statsProps}</p>
-              <p className="text-slate-100 text-3xl font-bold">500+</p>
-              <p className="text-emerald-400 text-xs font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '14px' }}>trending_up</span> {t.statsPropsDesc}</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
+            <div className="flex flex-col gap-2 text-center md:text-left">
+              <p className="text-stone-400 text-sm font-bold uppercase tracking-widest">{t.statsProps}</p>
+              <p className="text-stone-800 text-4xl font-extrabold">500+</p>
+              <p className="text-emerald-600 text-sm font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '16px' }}>trending_up</span> {t.statsPropsDesc}</p>
             </div>
-            <div className="flex flex-col gap-1 text-center md:text-left border-l border-slate-800 md:pl-8">
-              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">{t.statsInvestors}</p>
-              <p className="text-slate-100 text-3xl font-bold">1.2k</p>
-              <p className="text-emerald-400 text-xs font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '14px' }}>trending_up</span> {t.statsInvestorsDesc}</p>
+            <div className="flex flex-col gap-2 text-center md:text-left md:border-l border-stone-200 md:pl-10">
+              <p className="text-stone-400 text-sm font-bold uppercase tracking-widest">{t.statsInvestors}</p>
+              <p className="text-stone-800 text-4xl font-extrabold">1.2k</p>
+              <p className="text-emerald-600 text-sm font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '16px' }}>trending_up</span> {t.statsInvestorsDesc}</p>
             </div>
-            <div className="flex flex-col gap-1 text-center md:text-left border-l border-slate-800 md:pl-8">
-              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">{t.statsRoi}</p>
-              <p className="text-slate-100 text-3xl font-bold">12.4%</p>
-              <p className="text-emerald-400 text-xs font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '14px' }}>verified</span> {t.statsRoiDesc}</p>
+            <div className="flex flex-col gap-2 text-center md:text-left md:border-l border-stone-200 md:pl-10">
+              <p className="text-stone-400 text-sm font-bold uppercase tracking-widest">{t.statsRoi}</p>
+              <p className="text-stone-800 text-4xl font-extrabold">12.4%</p>
+              <p className="text-emerald-600 text-sm font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '16px' }}>verified</span> {t.statsRoiDesc}</p>
             </div>
-            <div className="flex flex-col gap-1 text-center md:text-left border-l border-slate-800 md:pl-8">
-              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">{t.statsValue}</p>
-              <p className="text-slate-100 text-3xl font-bold">$2.4B</p>
-              <p className="text-primary text-xs font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '14px' }}>public</span> {t.statsValueDesc}</p>
+            <div className="flex flex-col gap-2 text-center md:text-left md:border-l border-stone-200 md:pl-10">
+              <p className="text-stone-400 text-sm font-bold uppercase tracking-widest">{t.statsValue}</p>
+              <p className="text-stone-800 text-4xl font-extrabold">$2.4B</p>
+              <p className="text-amber-600 text-sm font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '16px' }}>public</span> {t.statsValueDesc}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <section className="py-24 bg-background-dark px-4">
+      <section className="py-32 bg-stone-50 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 text-center">
-            <h2 className="text-4xl font-bold text-slate-100 mb-4">{t.whyTitle}</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">{t.whyDesc}</p>
+          <div className="mb-20 text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 text-amber-700 text-xs font-bold uppercase tracking-widest mb-6">
+              Excellence in Real Estate
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-stone-900 mb-6">{t.whyTitle}</h2>
+            <p className="text-stone-500 text-lg max-w-2xl mx-auto font-medium">{t.whyDesc}</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-primary/50 transition-all">
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
-                <span className="material-symbols-outlined" style={{ fontSize: '30px' }}>cloud_done</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div className="group bg-white p-10 rounded-[2.5rem] border border-stone-100 shadow-xl shadow-stone-200/50 hover:shadow-2xl hover:shadow-amber-900/5 hover:-translate-y-2 transition-all duration-300">
+              <div className="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mb-8 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
+                <span className="material-symbols-outlined" style={{ fontSize: '32px' }}>cloud_done</span>
               </div>
-              <h3 className="text-xl font-bold text-slate-100 mb-3">{t.feat1Title}</h3>
-              <p className="text-slate-400 leading-relaxed">{t.feat1Desc}</p>
+              <h3 className="text-2xl font-bold text-stone-800 mb-4">{t.feat1Title}</h3>
+              <p className="text-stone-500 leading-relaxed font-medium">{t.feat1Desc}</p>
             </div>
-            <div className="group bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-primary/50 transition-all">
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
-                <span className="material-symbols-outlined" style={{ fontSize: '30px' }}>insights</span>
+            <div className="group bg-white p-10 rounded-[2.5rem] border border-stone-100 shadow-xl shadow-stone-200/50 hover:shadow-2xl hover:shadow-amber-900/5 hover:-translate-y-2 transition-all duration-300">
+              <div className="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mb-8 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
+                <span className="material-symbols-outlined" style={{ fontSize: '32px' }}>insights</span>
               </div>
-              <h3 className="text-xl font-bold text-slate-100 mb-3">{t.feat2Title}</h3>
-              <p className="text-slate-400 leading-relaxed">{t.feat2Desc}</p>
+              <h3 className="text-2xl font-bold text-stone-800 mb-4">{t.feat2Title}</h3>
+              <p className="text-stone-500 leading-relaxed font-medium">{t.feat2Desc}</p>
             </div>
-            <div className="group bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-primary/50 transition-all">
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
-                <span className="material-symbols-outlined" style={{ fontSize: '30px' }}>language</span>
+            <div className="group bg-white p-10 rounded-[2.5rem] border border-stone-100 shadow-xl shadow-stone-200/50 hover:shadow-2xl hover:shadow-amber-900/5 hover:-translate-y-2 transition-all duration-300">
+              <div className="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mb-8 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
+                <span className="material-symbols-outlined" style={{ fontSize: '32px' }}>language</span>
               </div>
-              <h3 className="text-xl font-bold text-slate-100 mb-3">{t.feat3Title}</h3>
-              <p className="text-slate-400 leading-relaxed">{t.feat3Desc}</p>
+              <h3 className="text-2xl font-bold text-stone-800 mb-4">{t.feat3Title}</h3>
+              <p className="text-stone-500 leading-relaxed font-medium">{t.feat3Desc}</p>
             </div>
           </div>
         </div>
