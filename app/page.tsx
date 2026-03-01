@@ -17,6 +17,10 @@ const dict = {
     searchLoc: "Ubicación (ej. Santiago, Toscana)",
     searchType: "Tipo de propiedad (ej. Departamento histórico)",
     searchBtn: "Buscar",
+    chatGreeting: "¡Hola! ¿En qué región te gustaría invertir hoy?",
+    chatPrompt: "Por favor, elige una región:",
+    chatAction: "Comenzar Búsqueda",
+    regionPlaceholder: "Selecciona una región...",
     statsProps: "Propiedades",
     statsPropsDesc: "+5% este mes",
     statsInvestors: "Inversores",
@@ -53,6 +57,10 @@ const dict = {
     searchLoc: "Località (es. Toscana, Lombardia, Firenze)",
     searchType: "Tipo di proprietà (es. Appartamento storico)",
     searchBtn: "Cerca",
+    chatGreeting: "Ciao! In quale regione ti piacerebbe investire oggi?",
+    chatPrompt: "Per favore, scegli una regione:",
+    chatAction: "Inizia Ricerca",
+    regionPlaceholder: "Seleziona una regione...",
     statsProps: "Proprietà Gestite",
     statsPropsDesc: "+5% questo mese",
     statsInvestors: "Investitori Attivi",
@@ -120,79 +128,88 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="relative h-screen min-h-[850px] w-full flex flex-col items-center justify-center overflow-hidden">
+      <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden">
         <div className="absolute inset-0 z-0 bg-stone-100">
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/30 to-transparent z-10"></div>
-          <img alt="Background Tuscany" className="w-full h-full object-cover scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop" />
+          <div className="absolute inset-0 bg-gradient-to-r from-stone-900/60 via-stone-900/20 to-black/40 xl:to-transparent z-10"></div>
+          <img alt="Background" className="w-full h-full object-cover object-left scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop" />
         </div>
 
-        <div className="relative z-20 w-full max-w-5xl px-4 flex flex-col items-center justify-center text-center mt-8">
-          <h1 className="text-white text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6 drop-shadow-xl">
-            {t.heroTitle} <span className="text-amber-400 drop-shadow-lg">{t.heroHighlight}</span> {t.heroTitleEnd}
-          </h1>
-          <p className="text-stone-100 text-lg md:text-2xl font-medium max-w-3xl mx-auto mb-14 drop-shadow-md">
-            {t.heroDesc}
-          </p>
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center justify-between mt-20 gap-8 h-full pb-20">
 
-          <div className="w-full max-w-5xl mx-auto bg-white/95 backdrop-blur-2xl border border-white/40 p-3 sm:p-4 rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] flex flex-col md:flex-row gap-3 md:gap-4 mb-14">
-            <div className="flex-1 flex items-center gap-3 px-6 bg-stone-100/50 hover:bg-stone-100/80 rounded-full border border-stone-200/60 focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-400/20 transition-all h-[70px]">
-              <span className="material-symbols-outlined text-amber-500 text-2xl">location_on</span>
-              <input className="w-full bg-transparent border-none focus:ring-0 text-stone-800 placeholder:text-stone-400 py-4 outline-none text-lg font-medium" placeholder={t.searchLoc} type="text" />
-            </div>
-            <div className="flex-1 flex items-center gap-3 px-6 bg-stone-100/50 hover:bg-stone-100/80 rounded-full border border-stone-200/60 focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-400/20 transition-all h-[70px]">
-              <span className="material-symbols-outlined text-amber-500 text-2xl">home_work</span>
-              <input className="w-full bg-transparent border-none focus:ring-0 text-stone-800 placeholder:text-stone-400 py-4 outline-none text-lg font-medium" placeholder={t.searchType} type="text" />
-            </div>
-            <button className="bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white h-[70px] md:h-auto px-12 rounded-full font-bold text-lg shadow-[0_10px_30px_-10px_rgba(217,119,6,0.5)] transform hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(217,119,6,0.6)] transition-all flex items-center justify-center gap-2">
-              <span className="material-symbols-outlined">search</span> {t.searchBtn}
-            </button>
+          {/* Left Text content: positioned for desktop */}
+          <div className="text-left flex-1 max-w-2xl hidden md:flex flex-col justify-center translate-y-[-2rem]">
+            <h1 className="text-white text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6 drop-shadow-xl">
+              {t.heroTitle} <br /><span className="text-amber-400 drop-shadow-lg">{t.heroHighlight}</span> <br />{t.heroTitleEnd}
+            </h1>
+            <p className="text-stone-100 text-lg md:text-2xl font-medium mb-10 drop-shadow-md">
+              {t.heroDesc}
+            </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <button className="bg-amber-600 hover:bg-amber-500 text-white px-10 py-4.5 rounded-full font-bold text-lg shadow-[0_8px_25px_-8px_rgba(217,119,6,0.6)] transform hover:-translate-y-1 transition-all flex items-center justify-center gap-3 group">
-              {t.exploreBtn} <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
-            </button>
-            <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/40 px-10 py-4.5 rounded-full font-bold text-lg transform hover:-translate-y-1 transition-all">
-              {t.portfolioBtn}
-            </button>
+          {/* Right Chat UI: mobile first (full width, centered), desktop (fixed width, right side) */}
+          <div className="w-full lg:w-[400px] h-[600px] max-h-[80vh] bg-white/40 backdrop-blur-xl border border-white/60 rounded-[3rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden relative">
+            {/* Top Bar simulating a phone header */}
+            <div className="w-full h-16 bg-white/30 backdrop-blur-md border-b border-white/40 flex items-center justify-center px-6 sticky top-0 z-10">
+              <div className="w-16 h-1.5 bg-stone-400/50 rounded-full absolute top-2 left-1/2 -translate-x-1/2"></div>
+              <p className="text-stone-800 font-bold text-lg mt-2 tracking-tight">AI Assistant</p>
+            </div>
+
+            {/* Chat Body */}
+            <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-4">
+
+              {/* Bot Message 1 */}
+              <div className="flex w-full items-start gap-2 max-w-[90%]">
+                <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center shadow-md shrink-0">
+                  <span className="material-symbols-outlined text-white text-sm">robot_2</span>
+                </div>
+                <div className="bg-white/70 backdrop-blur-md p-3.5 rounded-2xl rounded-tl-sm shadow-sm border border-white/60">
+                  <p className="text-stone-800 text-sm font-medium">{t.chatGreeting}</p>
+                </div>
+              </div>
+
+              {/* Bot Message 2 */}
+              <div className="flex w-full items-start gap-2 max-w-[90%] mt-2">
+                <div className="w-8 h-8 rounded-full bg-transparent shrink-0"></div>
+                <div className="bg-white/70 backdrop-blur-md p-3.5 rounded-2xl rounded-tl-sm shadow-sm border border-white/60">
+                  <p className="text-stone-800 text-sm font-medium">{t.chatPrompt}</p>
+                </div>
+              </div>
+
+              {/* Selector as an inline chat choice */}
+              <div className="flex w-full items-start gap-2 max-w-[95%] mt-2">
+                <div className="w-8 h-8 rounded-full bg-transparent shrink-0"></div>
+                <div className="w-full relative">
+                  <select className="w-full appearance-none bg-white/80 backdrop-blur-md border border-white/70 rounded-2xl p-4 text-stone-800 font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50 cursor-pointer">
+                    <option value="" disabled selected>{t.regionPlaceholder}</option>
+                    <option value="toscana">Toscana</option>
+                    <option value="lombardia">Lombardia</option>
+                    <option value="lazio">Lazio</option>
+                    <option value="veneto">Veneto</option>
+                    <option value="campania">Campania</option>
+                  </select>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-stone-500">
+                    <span className="material-symbols-outlined">expand_more</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Bottom Action Bar */}
+            <div className="p-5 bg-white/30 backdrop-blur-md border-t border-white/40 sticky bottom-0 z-10 relative">
+              <button className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                {t.chatAction}
+                <span className="material-symbols-outlined text-xl">send</span>
+              </button>
+            </div>
           </div>
         </div>
 
       </section>
 
-      <div className="bg-white py-16 border-b border-stone-100 shadow-sm relative z-30 -mt-8 rounded-t-[3rem] max-w-[95%] mx-auto">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
-            <div className="flex flex-col gap-2 text-center md:text-left">
-              <p className="text-stone-400 text-sm font-bold uppercase tracking-widest">{t.statsProps}</p>
-              <p className="text-stone-800 text-4xl font-extrabold">500+</p>
-              <p className="text-emerald-600 text-sm font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '16px' }}>trending_up</span> {t.statsPropsDesc}</p>
-            </div>
-            <div className="flex flex-col gap-2 text-center md:text-left md:border-l border-stone-200 md:pl-10">
-              <p className="text-stone-400 text-sm font-bold uppercase tracking-widest">{t.statsInvestors}</p>
-              <p className="text-stone-800 text-4xl font-extrabold">1.2k</p>
-              <p className="text-emerald-600 text-sm font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '16px' }}>trending_up</span> {t.statsInvestorsDesc}</p>
-            </div>
-            <div className="flex flex-col gap-2 text-center md:text-left md:border-l border-stone-200 md:pl-10">
-              <p className="text-stone-400 text-sm font-bold uppercase tracking-widest">{t.statsRoi}</p>
-              <p className="text-stone-800 text-4xl font-extrabold">12.4%</p>
-              <p className="text-emerald-600 text-sm font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '16px' }}>verified</span> {t.statsRoiDesc}</p>
-            </div>
-            <div className="flex flex-col gap-2 text-center md:text-left md:border-l border-stone-200 md:pl-10">
-              <p className="text-stone-400 text-sm font-bold uppercase tracking-widest">{t.statsValue}</p>
-              <p className="text-stone-800 text-4xl font-extrabold">$2.4B</p>
-              <p className="text-amber-600 text-sm font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '16px' }}>public</span> {t.statsValueDesc}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <section className="py-32 bg-stone-50 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 text-amber-700 text-xs font-bold uppercase tracking-widest mb-6">
-              Excellence in Real Estate
-            </div>
             <h2 className="text-4xl md:text-5xl font-extrabold text-stone-900 mb-6">{t.whyTitle}</h2>
             <p className="text-stone-500 text-lg max-w-2xl mx-auto font-medium">{t.whyDesc}</p>
           </div>
