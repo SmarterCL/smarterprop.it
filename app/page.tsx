@@ -126,45 +126,38 @@ export default function Home() {
           <img alt="Background" className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop" />
         </div>
 
-        <div className="relative z-20 max-w-5xl px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest mb-6">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            {t.heroPre}
-          </div>
-          <h1 className="text-white text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-6">
+        <div className="relative z-20 w-full max-w-5xl px-4 flex flex-col items-center justify-center text-center mt-[-5vh]">
+          <h1 className="text-white text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-8">
             {t.heroTitle} <span className="text-transparent bg-clip-text bg-gradient-to-r">{t.heroHighlight}</span> {t.heroTitleEnd}
           </h1>
-          <p className="text-slate-300 text-lg md:text-xl font-normal max-w-2xl mx-auto mb-10">
+          <p className="text-slate-300 text-lg md:text-xl font-normal max-w-2xl mx-auto mb-12">
             {t.heroDesc}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg transition-all flex items-center justify-center gap-2 group">
+
+          <div className="w-full max-w-4xl mx-auto bg-slate-900/80 backdrop-blur-xl border border-slate-700/80 p-3 rounded-2xl shadow-2xl flex flex-col md:flex-row gap-3 mb-12">
+            <div className="flex-1 flex items-center gap-3 px-5 bg-slate-800/80 rounded-xl border border-slate-700 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 transition-all">
+              <span className="material-symbols-outlined text-blue-400">location_on</span>
+              <input className="w-full bg-transparent border-none focus:ring-0 text-white placeholder:text-slate-400 py-4 outline-none text-lg" placeholder={t.searchLoc} type="text" />
+            </div>
+            <div className="flex-1 flex items-center gap-3 px-5 bg-slate-800/80 rounded-xl border border-slate-700 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 transition-all">
+              <span className="material-symbols-outlined text-blue-400">home_work</span>
+              <input className="w-full bg-transparent border-none focus:ring-0 text-white placeholder:text-slate-400 py-4 outline-none text-lg" placeholder={t.searchType} type="text" />
+            </div>
+            <button className="bg-blue-600 hover:bg-blue-500 text-white h-[60px] md:h-auto px-10 rounded-xl font-bold text-lg shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] transition-all flex items-center justify-center gap-2">
+              <span className="material-symbols-outlined">search</span> {t.searchBtn}
+            </button>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-5 justify-center">
+            <button className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] transition-all flex items-center justify-center gap-3 group">
               {t.exploreBtn} <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
             </button>
-            <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-xl font-bold text-lg transition-all">
+            <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-xl font-bold text-lg transition-all">
               {t.portfolioBtn}
             </button>
           </div>
         </div>
 
-        <div className="absolute bottom-12 left-0 w-full px-4 z-30 flex justify-center">
-          <div className="w-full max-w-4xl bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 p-3 rounded-2xl shadow-2xl flex flex-col md:flex-row gap-2">
-            <div className="flex-1 flex items-center gap-3 px-4 bg-slate-800/50 rounded-xl border border-slate-700 focus-within:border-primary transition-colors">
-              <span className="material-symbols-outlined text-slate-400">location_on</span>
-              <input className="w-full bg-transparent border-none focus:ring-0 text-slate-100 placeholder:text-slate-500 py-4 outline-none" placeholder={t.searchLoc} type="text" />
-            </div>
-            <div className="flex-1 flex items-center gap-3 px-4 bg-slate-800/50 rounded-xl border border-slate-700 focus-within:border-primary transition-colors">
-              <span className="material-symbols-outlined text-slate-400">home_work</span>
-              <input className="w-full bg-transparent border-none focus:ring-0 text-slate-100 placeholder:text-slate-500 py-4 outline-none" placeholder={t.searchType} type="text" />
-            </div>
-            <button className="bg-primary hover:bg-blue-600 text-white h-full px-8 py-4 md:py-0 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
-              <span className="material-symbols-outlined">search</span> {t.searchBtn}
-            </button>
-          </div>
-        </div>
       </section>
 
       <div className="bg-background-dark py-12 border-b border-slate-800">
