@@ -150,13 +150,13 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-full max-w-4xl px-4 z-30">
-          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 p-3 rounded-2xl shadow-2xl flex flex-col md:flex-row gap-2">
-            <div className="flex-1 flex items-center px-4 bg-slate-800/50 rounded-xl border border-slate-700 focus-within:border-primary transition-colors">
+        <div className="absolute bottom-12 left-0 w-full px-4 z-30 flex justify-center">
+          <div className="w-full max-w-4xl bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 p-3 rounded-2xl shadow-2xl flex flex-col md:flex-row gap-2">
+            <div className="flex-1 flex items-center gap-3 px-4 bg-slate-800/50 rounded-xl border border-slate-700 focus-within:border-primary transition-colors">
               <span className="material-symbols-outlined text-slate-400">location_on</span>
               <input className="w-full bg-transparent border-none focus:ring-0 text-slate-100 placeholder:text-slate-500 py-4 outline-none" placeholder={t.searchLoc} type="text" />
             </div>
-            <div className="flex-1 flex items-center px-4 bg-slate-800/50 rounded-xl border border-slate-700 focus-within:border-primary transition-colors">
+            <div className="flex-1 flex items-center gap-3 px-4 bg-slate-800/50 rounded-xl border border-slate-700 focus-within:border-primary transition-colors">
               <span className="material-symbols-outlined text-slate-400">home_work</span>
               <input className="w-full bg-transparent border-none focus:ring-0 text-slate-100 placeholder:text-slate-500 py-4 outline-none" placeholder={t.searchType} type="text" />
             </div>
