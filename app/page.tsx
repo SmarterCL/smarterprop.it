@@ -1,468 +1,262 @@
-import Link from "next/link"
-import Image from "next/image"
-import { ArrowRight, BarChart3, Calendar, CheckCircle, Globe, MessageSquare, ShoppingCart } from "lucide-react"
+"use client"
+import React, { useState } from 'react'
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+const dict = {
+  es: {
+    domain: "Smarterprop.cl",
+    propLink: "Propiedades",
+    howLink: "Cómo funciona",
+    loginBtn: "Acceder",
+    heroPre: "Plataforma SaaS de Nueva Generación",
+    heroTitle: "Smarterprop.online: Tu",
+    heroHighlight: "Cloud Incubator",
+    heroTitleEnd: "para Real Estate",
+    heroDesc: "Experimenta el futuro de las inversiones inmobiliarias de alto nivel. Usa nuestra inteligencia en la nube para escalar tu portafolio con precisión.",
+    exploreBtn: "Explorar Inversiones",
+    portfolioBtn: "Ver Portafolio",
+    searchLoc: "Ubicación (ej. Santiago, Toscana)",
+    searchType: "Tipo de propiedad (ej. Departamento histórico)",
+    searchBtn: "Buscar",
+    statsProps: "Propiedades",
+    statsPropsDesc: "+5% este mes",
+    statsInvestors: "Inversores",
+    statsInvestorsDesc: "+12% crecimiento",
+    statsRoi: "ROI Promedio",
+    statsRoiDesc: "Rendimiento Verificado",
+    statsValue: "Valor de Activos",
+    statsValueDesc: "Alcance Global",
+    whyTitle: "¿Por qué Smarterprop?",
+    whyDesc: "Combinamos tecnología cloud de nivel institucional con profunda experiencia en el sector inmobiliario.",
+    feat1Title: "Gestión Cloud",
+    feat1Desc: "Transparencia total con nuestro dashboard en tiempo real. Monitorea cada centavo desde tu celular o escritorio.",
+    feat2Title: "Data-Driven Alpha",
+    feat2Desc: "Nuestros modelos de IA identifican activos subvalorados antes de que lleguen al mercado abierto.",
+    feat3Title: "Acceso Global",
+    feat3Desc: "Invierte en propiedades premium en mercados globales sin complicaciones de burocracia local.",
+    footerText: "El futuro del sector inmobiliario está aquí.",
+    privacy: "Privacidad",
+    terms: "Términos",
+    contact: "Contacto"
+  },
+  it: {
+    domain: "Smarterprop.it",
+    propLink: "Proprietà",
+    howLink: "Come funziona",
+    loginBtn: "Accedi",
+    heroPre: "Piattaforma SaaS di Nuova Generazione",
+    heroTitle: "Smarterprop.online: Il tuo",
+    heroHighlight: "Cloud Incubator",
+    heroTitleEnd: "per il Real Estate",
+    heroDesc: "Sperimenta il futuro degli investimenti immobiliari di alto livello. Sfrutta la nostra intelligenza cloud per scalare il tuo portafoglio immobiliare con precisione.",
+    exploreBtn: "Esplora Investimenti",
+    portfolioBtn: "Visualizza Portfolio",
+    searchLoc: "Località (es. Toscana, Lombardia, Firenze)",
+    searchType: "Tipo di proprietà (es. Appartamento storico)",
+    searchBtn: "Cerca",
+    statsProps: "Proprietà Gestite",
+    statsPropsDesc: "+5% questo mese",
+    statsInvestors: "Investitori Attivi",
+    statsInvestorsDesc: "+12% crescita",
+    statsRoi: "ROI Annuo Medio",
+    statsRoiDesc: "Rendimento Verificato",
+    statsValue: "Valore Asset",
+    statsValueDesc: "Portata Globale",
+    whyTitle: "Perché Smarterprop?",
+    whyDesc: "Combiniamo la tecnologia cloud di livello istituzionale con una profonda esperienza nel settore immobiliare per offrire un'esperienza di investimento senza pari.",
+    feat1Title: "Gestione Cloud",
+    feat1Desc: "Sperimenta la massima trasparenza con la nostra dashboard in tempo reale. Monitora ogni centesimo e ogni traguardo dal tuo cellulare o desktop.",
+    feat2Title: "Alpha Basata sui Dati",
+    feat2Desc: "I nostri modelli AI identificano asset sottovalutati prima che arrivino sul mercato aperto, garantendo rendimenti d'investimento leader di mercato.",
+    feat3Title: "Accesso Globale",
+    feat3Desc: "Investi in proprietà premium nei principali mercati globali senza le complicazioni della burocrazia locale o delle complessità legali.",
+    footerText: "Il futuro del settore immobiliare è qui.",
+    privacy: "Privacy",
+    terms: "Termini",
+    contact: "Contatti"
+  }
+}
 
-export default function LandingPage() {
+export default function Home() {
+  const [lang, setLang] = useState<'es' | 'it'>('es')
+  const t = dict[lang]
+
   return (
-    <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2 font-bold text-xl">
-            <span className="text-primary">Smarter</span>
-            <span>Prop.cl</span>
+    <>
+      <nav className="fixed top-0 w-full z-50 bg-background-dark/80 backdrop-blur-md border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="text-primary flex items-center">
+              <span className="material-symbols-outlined" style={{ fontSize: '36px' }}>domain</span>
+            </div>
+            <h2 className="text-xl font-bold tracking-tight text-slate-100">
+              Smarterprop<span className="text-primary">.online</span>
+            </h2>
           </div>
-          <nav className="hidden md:flex gap-6">
-            <Link href="#features" className="text-sm font-medium hover:text-primary">
-              Funcionalidades
-            </Link>
-            <Link href="#pricing" className="text-sm font-medium hover:text-primary">
-              Precios
-            </Link>
-            <Link href="#faq" className="text-sm font-medium hover:text-primary">
-              FAQ
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <Link href="#contact">
-              <Button variant="outline" size="sm" className="hidden md:flex">
-                Contacto
-              </Button>
-            </Link>
-            <Link href="#signup">
-              <Button size="sm">Comenzar Gratis</Button>
-            </Link>
+          <div className="flex items-center gap-6">
+            <a className="hidden md:block text-sm font-medium hover:text-primary transition-colors cursor-pointer">{t.propLink}</a>
+            <a className="hidden md:block text-sm font-medium hover:text-primary transition-colors cursor-pointer">{t.howLink}</a>
+
+            <div className="flex items-center gap-2 bg-slate-800/50 p-1 rounded-lg border border-slate-700">
+              <button
+                onClick={() => setLang('es')}
+                className={`w-8 h-8 rounded shrink-0 flex items-center justify-center transition-all ${lang === 'es' ? 'bg-primary/20 border border-primary/50' : 'opacity-50 hover:opacity-100'}`}
+                title="Chile (ES)"
+              >
+                🇨🇱
+              </button>
+              <button
+                onClick={() => setLang('it')}
+                className={`w-8 h-8 rounded shrink-0 flex items-center justify-center transition-all ${lang === 'it' ? 'bg-primary/20 border border-primary/50' : 'opacity-50 hover:opacity-100'}`}
+                title="Italy (IT)"
+              >
+                🇮🇹
+              </button>
+            </div>
+
+            <button className="bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 px-6 py-2 rounded-lg font-bold text-sm transition-all">
+              {t.loginBtn}
+            </button>
           </div>
         </div>
-      </header>
-      <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-background to-muted">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-                    La nueva forma inteligente de vender propiedades en Chile
-                  </h1>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Sin necesidad de portales costosos ni sistemas anticuados. Una plataforma todo-en-uno para agentes
-                    inmobiliarios.
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Link href="#signup">
-                    <Button size="lg" className="gap-1">
-                      Prueba Gratis
-                      <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </Link>
-                  <Link href="#demo">
-                    <Button size="lg" variant="outline">
-                      Ver Demo
-                    </Button>
-                  </Link>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>Gratis hasta 3 propiedades</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="relative h-[350px] w-full md:h-[450px] lg:h-[500px]">
-                  <Image
-                    src="/placeholder.svg?height=500&width=500"
-                    alt="Dashboard de SmarterProp"
-                    fill
-                    className="object-contain"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+      </nav>
 
-        <section id="features" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
-                  Funcionalidades
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Convierte propiedades en productos de e-commerce
-                </h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Con automatización y métricas de conversión para maximizar tus ventas
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-2">
-              <Card>
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <ShoppingCart className="h-8 w-8 text-primary" />
-                  <div className="grid gap-1">
-                    <CardTitle>Catálogo Dinámico + Shopify Sync</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">
-                    Cada propiedad se publica como un producto Shopify con fotos, precio, descripción, tour virtual y
-                    botón de agendamiento. Integración automática vía n8n desde planilla, CRM o formulario.
-                  </CardDescription>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <MessageSquare className="h-8 w-8 text-primary" />
-                  <div className="grid gap-1">
-                    <CardTitle>SmartLeads con WhatsApp + Correo</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">
-                    Captura el lead desde la ficha de propiedad y dispara una secuencia de WhatsApp, mail y notificación
-                    en tiempo real al vendedor. Incluye bot con IA para responder preguntas frecuentes.
-                  </CardDescription>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <Calendar className="h-8 w-8 text-primary" />
-                  <div className="grid gap-1">
-                    <CardTitle>Agenda Automatizada de Visitas</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">
-                    Calendario compartido (Google/Outlook/iCal) donde clientes pueden agendar visitas en línea
-                    (virtuales o físicas). n8n automatiza recordatorios y seguimiento post-visita.
-                  </CardDescription>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <BarChart3 className="h-8 w-8 text-primary" />
-                  <div className="grid gap-1">
-                    <CardTitle>Módulo de Análisis de Interés</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">
-                    Dashboard para cada vendedor o agencia que mide: clics, formularios, visitas agendadas, conversión
-                    por propiedad y por canal (Instagram, sitio, QR, etc.). Estilo Google Analytics + CRM.
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
+      <section className="relative h-screen min-h-[700px] w-full flex flex-col items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 hero-gradient z-10"></div>
+          <img alt="Background" className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop" />
+        </div>
 
-        <section id="pricing" className="w-full py-12 md:py-24 lg:py-32 bg-muted">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
-                  Precios
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Planes simples y transparentes</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Paga solo por las propiedades activas que necesites
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-3">
-              <Card className="flex flex-col">
-                <CardHeader>
-                  <CardTitle>Gratis</CardTitle>
-                  <div className="text-3xl font-bold">$0</div>
-                  <CardDescription>Ideal para comenzar</CardDescription>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-4 flex-1">
-                  <ul className="grid gap-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Hasta 3 propiedades</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Catálogo básico</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Captura de leads</span>
-                    </li>
-                  </ul>
-                </CardContent>
-                <div className="p-6 pt-0 mt-auto">
-                  <Link href="#signup">
-                    <Button className="w-full">Comenzar Gratis</Button>
-                  </Link>
-                </div>
-              </Card>
-              <Card className="flex flex-col border-primary">
-                <CardHeader>
-                  <CardTitle>Starter</CardTitle>
-                  <div className="text-3xl font-bold">
-                    $19.990 <span className="text-sm font-normal">/ mes</span>
-                  </div>
-                  <CardDescription>Para corredores independientes</CardDescription>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-4 flex-1">
-                  <ul className="grid gap-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Hasta 5 propiedades</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Integración con Shopify</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>SmartLeads con WhatsApp</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Agenda automatizada</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Análisis básico</span>
-                    </li>
-                  </ul>
-                </CardContent>
-                <div className="p-6 pt-0 mt-auto">
-                  <Link href="#signup">
-                    <Button className="w-full">Elegir Plan</Button>
-                  </Link>
-                </div>
-              </Card>
-              <Card className="flex flex-col">
-                <CardHeader>
-                  <CardTitle>Growth</CardTitle>
-                  <div className="text-3xl font-bold">
-                    $49.990 <span className="text-sm font-normal">/ mes</span>
-                  </div>
-                  <CardDescription>Para equipos inmobiliarios</CardDescription>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-4 flex-1">
-                  <ul className="grid gap-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Hasta 20 propiedades</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Todo lo del plan Starter</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Bot con IA para preguntas</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Análisis avanzado</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Soporte prioritario</span>
-                    </li>
-                  </ul>
-                </CardContent>
-                <div className="p-6 pt-0 mt-auto">
-                  <Link href="#signup">
-                    <Button className="w-full">Elegir Plan</Button>
-                  </Link>
-                </div>
-              </Card>
-            </div>
-            <div className="text-center">
-              <p className="text-muted-foreground">
-                ¿Necesitas más propiedades? Contáctanos para conocer nuestro plan Enterprise con propiedades ilimitadas,
-                branding personalizado y API.
-              </p>
-            </div>
+        <div className="relative z-20 max-w-5xl px-4 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            {t.heroPre}
           </div>
-        </section>
+          <h1 className="text-white text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-6">
+            {t.heroTitle} <span className="text-transparent bg-clip-text bg-gradient-to-r">{t.heroHighlight}</span> {t.heroTitleEnd}
+          </h1>
+          <p className="text-slate-300 text-lg md:text-xl font-normal max-w-2xl mx-auto mb-10">
+            {t.heroDesc}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg transition-all flex items-center justify-center gap-2 group">
+              {t.exploreBtn} <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+            </button>
+            <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-xl font-bold text-lg transition-all">
+              {t.portfolioBtn}
+            </button>
+          </div>
+        </div>
 
-        <section id="signup" className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  Comienza a vender propiedades de forma inteligente
-                </h2>
-                <p className="mx-auto max-w-[700px] text-primary-foreground/80 md:text-xl">
-                  Regístrate hoy y obtén acceso gratuito para publicar tus primeras 3 propiedades
-                </p>
-              </div>
-              <div className="w-full max-w-sm space-y-2">
-                <form className="flex flex-col space-y-4">
-                  <input
-                    className="flex h-10 w-full rounded-md border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-2 text-sm placeholder:text-primary-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary-foreground/20"
-                    placeholder="Nombre"
-                    type="text"
-                  />
-                  <input
-                    className="flex h-10 w-full rounded-md border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-2 text-sm placeholder:text-primary-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary-foreground/20"
-                    placeholder="Email"
-                    type="email"
-                  />
-                  <input
-                    className="flex h-10 w-full rounded-md border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-2 text-sm placeholder:text-primary-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary-foreground/20"
-                    placeholder="Teléfono"
-                    type="tel"
-                  />
-                  <Button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-                    Crear Cuenta Gratis
-                  </Button>
-                </form>
-              </div>
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-full max-w-4xl px-4 z-30">
+          <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 p-3 rounded-2xl shadow-2xl flex flex-col md:flex-row gap-2">
+            <div className="flex-1 flex items-center px-4 bg-slate-800/50 rounded-xl border border-slate-700 focus-within:border-primary transition-colors">
+              <span className="material-symbols-outlined text-slate-400">location_on</span>
+              <input className="w-full bg-transparent border-none focus:ring-0 text-slate-100 placeholder:text-slate-500 py-4 outline-none" placeholder={t.searchLoc} type="text" />
             </div>
+            <div className="flex-1 flex items-center px-4 bg-slate-800/50 rounded-xl border border-slate-700 focus-within:border-primary transition-colors">
+              <span className="material-symbols-outlined text-slate-400">home_work</span>
+              <input className="w-full bg-transparent border-none focus:ring-0 text-slate-100 placeholder:text-slate-500 py-4 outline-none" placeholder={t.searchType} type="text" />
+            </div>
+            <button className="bg-primary hover:bg-blue-600 text-white h-full px-8 py-4 md:py-0 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+              <span className="material-symbols-outlined">search</span> {t.searchBtn}
+            </button>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="faq" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Preguntas Frecuentes</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Respuestas a las dudas más comunes sobre SmarterProp
-                </p>
-              </div>
+      <div className="bg-background-dark py-12 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="flex flex-col gap-1 text-center md:text-left">
+              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">{t.statsProps}</p>
+              <p className="text-slate-100 text-3xl font-bold">500+</p>
+              <p className="text-emerald-400 text-xs font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '14px' }}>trending_up</span> {t.statsPropsDesc}</p>
             </div>
-            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2">
-              <Card>
-                <CardHeader>
-                  <CardTitle>¿Necesito conocimientos técnicos?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p>
-                    No, SmarterProp está diseñado para ser fácil de usar. No necesitas conocimientos técnicos para
-                    publicar propiedades, gestionar leads o ver estadísticas.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>¿Puedo integrar con mi sitio web actual?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p>
-                    Sí, ofrecemos widgets y APIs para integrar SmarterProp con tu sitio web existente, o puedes usar
-                    nuestro catálogo como tu sitio principal de propiedades.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>¿Cómo funciona la integración con Shopify?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p>
-                    Cada propiedad se sincroniza como un producto en Shopify, permitiéndote aprovechar todas las
-                    herramientas de e-commerce para tus propiedades inmobiliarias.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>¿Puedo cambiar de plan en cualquier momento?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p>
-                    Sí, puedes actualizar o cambiar tu plan en cualquier momento según tus necesidades, pagando solo por
-                    las propiedades activas que necesites.
-                  </p>
-                </CardContent>
-              </Card>
+            <div className="flex flex-col gap-1 text-center md:text-left border-l border-slate-800 md:pl-8">
+              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">{t.statsInvestors}</p>
+              <p className="text-slate-100 text-3xl font-bold">1.2k</p>
+              <p className="text-emerald-400 text-xs font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '14px' }}>trending_up</span> {t.statsInvestorsDesc}</p>
+            </div>
+            <div className="flex flex-col gap-1 text-center md:text-left border-l border-slate-800 md:pl-8">
+              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">{t.statsRoi}</p>
+              <p className="text-slate-100 text-3xl font-bold">12.4%</p>
+              <p className="text-emerald-400 text-xs font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '14px' }}>verified</span> {t.statsRoiDesc}</p>
+            </div>
+            <div className="flex flex-col gap-1 text-center md:text-left border-l border-slate-800 md:pl-8">
+              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">{t.statsValue}</p>
+              <p className="text-slate-100 text-3xl font-bold">$2.4B</p>
+              <p className="text-primary text-xs font-bold flex items-center justify-center md:justify-start gap-1"><span className="material-symbols-outlined" style={{ fontSize: '14px' }}>public</span> {t.statsValueDesc}</p>
             </div>
           </div>
-        </section>
-      </main>
-      <footer className="w-full border-t bg-background py-6 md:py-12">
-        <div className="container px-4 md:px-6">
-          <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2 font-bold text-xl">
-                <span className="text-primary">Smarter</span>
-                <span>Prop.cl</span>
+        </div>
+      </div>
+
+      <section className="py-24 bg-background-dark px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl font-bold text-slate-100 mb-4">{t.whyTitle}</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">{t.whyDesc}</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="group bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-primary/50 transition-all">
+              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                <span className="material-symbols-outlined" style={{ fontSize: '30px' }}>cloud_done</span>
               </div>
-              <p className="text-sm text-muted-foreground">La nueva forma inteligente de vender propiedades en Chile</p>
+              <h3 className="text-xl font-bold text-slate-100 mb-3">{t.feat1Title}</h3>
+              <p className="text-slate-400 leading-relaxed">{t.feat1Desc}</p>
             </div>
-            <div className="space-y-4">
-              <h4 className="font-medium">Producto</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <Link href="#features" className="hover:text-foreground">
-                    Funcionalidades
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#pricing" className="hover:text-foreground">
-                    Precios
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#demo" className="hover:text-foreground">
-                    Demo
-                  </Link>
-                </li>
-              </ul>
+            <div className="group bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-primary/50 transition-all">
+              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                <span className="material-symbols-outlined" style={{ fontSize: '30px' }}>insights</span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-100 mb-3">{t.feat2Title}</h3>
+              <p className="text-slate-400 leading-relaxed">{t.feat2Desc}</p>
             </div>
-            <div className="space-y-4">
-              <h4 className="font-medium">Empresa</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <Link href="#about" className="hover:text-foreground">
-                    Sobre Nosotros
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#blog" className="hover:text-foreground">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#contact" className="hover:text-foreground">
-                    Contacto
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h4 className="font-medium">Legal</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <Link href="#terms" className="hover:text-foreground">
-                    Términos
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#privacy" className="hover:text-foreground">
-                    Privacidad
-                  </Link>
-                </li>
-              </ul>
+            <div className="group bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-primary/50 transition-all">
+              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                <span className="material-symbols-outlined" style={{ fontSize: '30px' }}>language</span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-100 mb-3">{t.feat3Title}</h3>
+              <p className="text-slate-400 leading-relaxed">{t.feat3Desc}</p>
             </div>
           </div>
-          <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t pt-6 md:h-24 md:flex-row">
-            <p className="text-center text-sm text-muted-foreground md:text-left">
-              © 2024 SmarterProp.cl. Todos los derechos reservados.
-            </p>
-            <div className="flex items-center gap-4">
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
-                <Globe className="h-5 w-5" />
-                <span className="sr-only">Sitio Web</span>
-              </Link>
+        </div>
+      </section>
+
+      <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-50">
+        <a className="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform" href="#" title="WhatsApp Support">
+          <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" style={{ width: '32px', height: '32px' }}>
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.284l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.768-5.764-5.768zm3.393 8.21c-.146.415-.844.762-1.156.81-.283.044-.648.077-1.048-.049-.24-.075-.544-.176-1.129-.427-1.189-.512-1.956-1.721-2.015-1.8-.059-.08-1.012-1.345-1.012-2.566 0-1.22.643-1.819.871-2.064.228-.244.498-.306.664-.306s.332.002.477.01c.153.008.358-.058.558.427.203.489.696 1.7.758 1.826.062.127.104.275.021.442-.083.167-.125.271-.249.415-.125.144-.262.321-.374.43-.125.121-.256.255-.11.505.146.251.649 1.07 1.391 1.731.952.849 1.756 1.112 2.006 1.236.25.124.394.103.541-.064.146-.167.623-.726.789-.974.166-.248.332-.209.56-.124.228.084 1.445.682 1.694.807s.415.188.477.297c.062.109.062.634-.084 1.049z"></path>
+          </svg>
+        </a>
+        <a className="w-14 h-14 bg-[#0088cc] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform" href="#" title="Telegram Channel">
+          <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" style={{ width: '32px', height: '32px' }}>
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.35-.01-1.02-.2-1.52-.37-.61-.21-1.1-.32-1.05-.67.02-.18.27-.37.75-.56 2.93-1.27 4.88-2.11 5.86-2.51 2.81-1.16 3.39-1.36 3.77-1.37.08 0 .27.02.39.12.1.08.13.19.14.27.01.06.01.24 0 .38z"></path>
+          </svg>
+        </a>
+      </div>
+
+      <footer className="bg-slate-950 py-12 border-t border-slate-900">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center gap-2">
+            <div className="text-primary flex items-center">
+              <span className="material-symbols-outlined" style={{ fontSize: '30px' }}>domain</span>
             </div>
+            <h2 className="text-lg font-bold tracking-tight text-slate-100">
+              Smarterprop<span className="text-primary">.online</span>
+            </h2>
+          </div>
+          <p className="text-slate-500 text-sm">© 2024 Smarterprop.online. {t.footerText}</p>
+          <div className="flex gap-6 text-slate-400">
+            <a className="hover:text-primary transition-colors cursor-pointer">{t.privacy}</a>
+            <a className="hover:text-primary transition-colors cursor-pointer">{t.terms}</a>
+            <a className="hover:text-primary transition-colors cursor-pointer">{t.contact}</a>
           </div>
         </div>
       </footer>
-    </div>
+    </>
   )
 }
